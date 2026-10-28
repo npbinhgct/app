@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tải app HK SmartBidet</title>
+<meta name="description" content="Điều khiển bồn cầu thông minh ngay trên điện thoại. Tải app HK SmartBidet.">
+<style>
+  :root { --navy:#0B2A3F; --teal:#0E7C86; --teal-l:#45C4C8; --ink:#0B2A3F; --muted:#4A6070; --bg:#FFFFFF; --card:#F2F7F8; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#FFFFFF; --muted:#B4C9D4; --bg:#0B2A3F; --card:#123A52; --teal:#45C4C8; } }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; background:var(--bg); color:var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         display:flex; align-items:center; justify-content:center; padding:24px 16px; }
+  main { width:100%; max-width:420px; text-align:center; }
+  .logo { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
+  .hk { background:var(--teal); color:var(--bg); font-weight:700; font-size:18px; padding:4px 7px; border-radius:6px; }
+  .word { font-size:32px; font-weight:600; letter-spacing:-0.5px; }
+  .word b { color:var(--teal); font-weight:700; }
+  p { color:var(--muted); margin:8px 0 24px; line-height:1.5; }
+  .btn { display:block; padding:14px 18px; margin:10px 0; border-radius:14px; font-weight:600; font-size:17px; text-decoration:none; }
+  .play { background:var(--teal); color:#FFFFFF; }
+  .ios { background:var(--card); color:var(--muted); }
+  a.ios { color:var(--ink); }
+  small { display:block; color:var(--muted); margin-top:20px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">
+    <svg width="34" height="45" viewBox="0 0 48 64" aria-hidden="true">
+      <path d="M24 2 C24 2 4 25 4 41 a20 20 0 0 0 40 0 C44 25 24 2 24 2 Z" fill="currentColor" style="color:var(--teal)"></path>
+      <path d="M10.5 36.5 a19 19 0 0 1 27 0" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+      <path d="M16 42 a11.3 11.3 0 0 1 16 0" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+      <circle cx="24" cy="49" r="3.6" fill="#FFFFFF"></circle>
+    </svg>
+    <span class="hk">HK</span><span class="word">Smart<b>Bidet</b></span>
+  </div>
+  <p>Điều khiển bồn cầu thông minh ngay trên điện thoại.</p>
+  <a class="btn play" id="play" href="https://play.google.com/store/apps/details?id=com.hankultech.smartbidet">Tải trên Google Play (Android)</a>
+  <span class="btn ios" id="ios">iPhone: sắp có trên App Store</span>
+  <small id="note"></small>
+</main>
+<script>
+  // Sửa 2 dòng này khi cần. Có app iPhone thì dán link App Store vào IOS (để trống = "sắp có").
+  var PLAY = "https://play.google.com/store/apps/details?id=com.hankultech.smartbidet";
+  var IOS = "";
+
+  if (IOS) {
+    var s = document.getElementById("ios"), a = document.createElement("a");
+    a.className = "btn ios"; a.id = "ios"; a.href = IOS; a.textContent = "Tải trên App Store (iPhone)";
+    s.parentNode.replaceChild(a, s);
+  }
+  var ua = navigator.userAgent || "";
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isAndroid) { document.getElementById("note").textContent = "Đang mở Google Play…"; location.replace(PLAY); }
+  else if (isIOS && IOS) { document.getElementById("note").textContent = "Đang mở App Store…"; location.replace(IOS); }
+</script>
+</body>
+</html>
